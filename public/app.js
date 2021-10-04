@@ -31,4 +31,4 @@ function checkPos() {
   }
 }
 
-setInterval(checkPos, 1000);
+// setInterval(checkPos, 1000);

@@ -1,0 +1,44 @@
+/** @format */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  background-color: #eee;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  list-style: none;
+}
+form {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form *,
+input {
+  font-size: 24px;
+  width: 100%;
+  border: none;
+  padding: 5px;
+}
+button {
+  flex: 1;
+  background-color: cornflowerblue;
+  color: white;
+}
+#input {
+  flex: 2;
+}

@@ -2,20 +2,34 @@
 
 var socket = io();
 
+socket.on("past messages", (pMsg) => {
+  messages.innerHTML = "";
+  pMsg = JSON.parse(pMsg);
+  console.log(pMsg);
+
+  pMsg.forEach((msg) => {
+    messages.innerHTML += `<li>${msg.username}: ${msg.message}</li>`;
+  });
+});
+
 let messages = document.getElementById("messages");
 let form = document.getElementById("form");
 let input = document.getElementById("input");
+let username = document.getElementById("name");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (input.value) {
-    socket.emit("chat message", input.value);
+    let msg = { username: username.value || "anon", message: input.value };
+    socket.emit("chat message", JSON.stringify(msg));
     console.log("sent");
   }
+  input.value = "";
 });
 
 socket.on("chat message", (msg) => {
-  messages.innerHTML += `<li>${msg}</li>`;
+  msg = JSON.parse(msg);
+  messages.innerHTML += `<li>${msg.username}: ${msg.message}</li>`;
 });
 
 function success(position) {
